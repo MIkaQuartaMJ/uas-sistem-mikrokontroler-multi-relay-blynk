@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "author": "Mika Quarta Mulya Jatnika",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": -268.8,
+      "left": -340.76,
+      "attrs": {}
+    },
+    { "type": "wokwi-relay-module", "id": "relay1", "top": -47.8, "left": -211.2, "attrs": {} },
+    { "type": "wokwi-relay-module", "id": "relay2", "top": 38.6, "left": -211.2, "attrs": {} },
+    { "type": "wokwi-relay-module", "id": "relay3", "top": 125, "left": -211.2, "attrs": {} },
+    { "type": "wokwi-led", "id": "led1", "top": -291.6, "left": 23, "attrs": { "color": "red" } },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": -176.4,
+      "left": 32.6,
+      "attrs": { "color": "blue" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led3",
+      "top": -70.8,
+      "left": 32.6,
+      "attrs": { "color": "yellow" }
+    },
+    { "type": "wokwi-vcc", "id": "vcc1", "top": -229.64, "left": 220.8, "attrs": {} },
+    { "type": "wokwi-gnd", "id": "gnd1", "top": -115.2, "left": 229.8, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:5V", "relay1:VCC", "red", [ "h-57.45", "v67.2" ] ],
+    [ "relay1:VCC", "relay2:VCC", "red", [ "h-38.4", "v76.8" ] ],
+    [ "relay2:VCC", "relay3:VCC", "red", [ "h-38.4", "v86.4" ] ],
+    [ "esp:CMD", "relay1:GND", "black", [ "h-47.85", "v86.4" ] ],
+    [ "relay1:GND", "relay2:GND", "black", [ "h-28.8", "v86" ] ],
+    [ "relay2:GND", "relay3:GND", "black", [ "h-28.8", "v86" ] ],
+    [ "esp:26", "relay1:IN", "green", [ "h-38.25", "v172.8" ] ],
+    [ "esp:27", "relay2:IN", "green", [ "h-28.65", "v249.6" ] ],
+    [ "esp:14", "relay3:IN", "green", [ "h-67.05", "v326.4" ] ],
+    [ "relay1:NO", "led3:A", "gold", [ "h0" ] ],
+    [ "led3:C", "gnd1:GND", "black", [ "v38.4", "h134.8", "v-163.2" ] ],
+    [ "relay1:COM", "vcc1:VCC", "magenta", [ "h78", "v-164.6" ] ],
+    [ "relay2:NO", "led2:A", "blue", [ "h126", "v-184.2", "h28.8" ] ],
+    [ "led2:C", "gnd1:GND", "black", [ "v0" ] ],
+    [ "relay2:COM", "vcc1:VCC", "magenta", [ "h308.4", "v-241.4", "h19.2" ] ],
+    [ "relay3:NO", "led1:A", "red", [ "h116.4", "v-385.8", "h28.8" ] ],
+    [ "relay3:COM", "vcc1:VCC", "magenta", [ "h298.8", "v-308.6", "h28.8" ] ],
+    [ "led1:C", "gnd1:GND", "black", [ "v67.2", "h202" ] ]
+  ],
+  "dependencies": {}
+}
